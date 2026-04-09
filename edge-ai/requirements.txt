@@ -1,13 +1,8 @@
 fastapi
 uvicorn
 sqlalchemy
+aiofiles
+python-multipart
 requests
-psutil
-schedule
-plyer
-pydanticuvicorn 
-fastapi 
-python-dotenv 
-psutil 
-schedule 
-plyer 
+pydantic
+python-dotenv
