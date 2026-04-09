@@ -1,6 +1,19 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Security, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.security.api_key import APIKeyHeader
+from dotenv import load_dotenv
+import os
 import requests
+
+load_dotenv()
+
+API_KEY = os.getenv("API_KEY")
+api_key_header = APIKeyHeader(name="X-API-Key", auto_error=False)
+
+async def verify_api_key(api_key: str = Security(api_key_header)):
+    if api_key != API_KEY:
+        raise HTTPException(status_code=403, detail="Invalid API Key")
+    return api_key
 
 app = FastAPI(
     title="AI Ecosystem — Unified API",
@@ -16,15 +29,15 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# All app URLs
-STUDY_APP = "http://127.0.0.1:8000"
-FITNESS_APP = "http://127.0.0.1:8001"
-MOVIE_APP = "http://127.0.0.1:8002"
-JARVIS = "http://127.0.0.1:8003"
+STUDY_APP = "https://study-app-qwlh.onrender.com"
+FITNESS_APP = "https://fitness-app-2li2.onrender.com"
+MOVIE_APP = "https://movie-app-fjwu.onrender.com"
+JARVIS = "https://jarvis-edge-ai.onrender.com"
+HEADERS = {"X-API-Key": API_KEY}
 
 def fetch(url):
     try:
-        response = requests.get(url, timeout=5)
+        response = requests.get(url, headers=HEADERS, timeout=5)
         return response.json()
     except:
         return {"error": f"Service at {url} is not running"}
@@ -41,9 +54,8 @@ def root():
         }
     }
 
-@app.get("/dashboard")
+@app.get("/dashboard", dependencies=[Depends(verify_api_key)])
 def dashboard():
-    # Fetch data from all apps at once
     jarvis_today = fetch(f"{JARVIS}/today")
     gaming_stats = fetch(f"{JARVIS}/gaming")
     study_stats = fetch(f"{JARVIS}/study")
@@ -53,7 +65,6 @@ def dashboard():
     books = fetch(f"{STUDY_APP}/books/")
     workouts = fetch(f"{FITNESS_APP}/workouts/summary")
     movies = fetch(f"{MOVIE_APP}/watch-sessions/today")
-
     return {
         "today_summary": jarvis_today,
         "alerts": alerts,
@@ -72,13 +83,12 @@ def dashboard():
         }
     }
 
-@app.get("/weekly-report")
+@app.get("/weekly-report", dependencies=[Depends(verify_api_key)])
 def full_weekly_report():
     jarvis_report = fetch(f"{JARVIS}/weekly-report")
     study_report = fetch(f"{STUDY_APP}/ai-tutor/weekly-report")
     fitness_report = fetch(f"{FITNESS_APP}/ai-fitness/weekly-report")
     movie_report = fetch(f"{MOVIE_APP}/ai-movies/weekly-report")
-
     return {
         "jarvis_analysis": jarvis_report,
         "study_report": study_report,
