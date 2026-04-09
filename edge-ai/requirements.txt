@@ -1,4 +1,9 @@
 fastapi
 uvicorn
+sqlalchemy
 requests
+psutil
+schedule
+plyer
+pydantic
 python-dotenv
