@@ -1,4 +1,12 @@
 fastapi
 uvicorn
+<<<<<<< HEAD
 requests
+=======
+sqlalchemy
+aiofiles
+python-multipart
+requests
+pydantic
+>>>>>>> 834debd39bc05599b6f39efb564b1d06845469e8
 python-dotenv

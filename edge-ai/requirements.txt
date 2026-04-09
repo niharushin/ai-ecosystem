@@ -1,9 +1,14 @@
 fastapi
 uvicorn
 sqlalchemy
+aiofiles
+python-multipart
 requests
+<<<<<<< HEAD
 psutil
 schedule
 plyer
+=======
+>>>>>>> 834debd39bc05599b6f39efb564b1d06845469e8
 pydantic
 python-dotenv
