@@ -1,5 +1,8 @@
 fastapi
 uvicorn
-requestsuvicorn 
-fastapi 
-python-dotenv 
+sqlalchemy
+aiofiles
+python-multipart
+requests
+pydantic
+python-dotenv
