@@ -4,4 +4,6 @@ sqlalchemy
 aiofiles
 python-multipart
 requests
-pydantic
+pydanticuvicorn 
+fastapi 
+python-dotenv 

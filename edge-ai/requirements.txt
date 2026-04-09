@@ -5,4 +5,9 @@ requests
 psutil
 schedule
 plyer
-pydantic
+pydanticuvicorn 
+fastapi 
+python-dotenv 
+psutil 
+schedule 
+plyer 
