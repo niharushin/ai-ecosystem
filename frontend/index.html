@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>J.A.R.V.I.S. // Command Center</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&amp;family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary": "#3d0090",
+                      "surface-container-low": "#181b25",
+                      "on-error-container": "#ffdad6",
+                      "outline": "#859398",
+                      "background": "#10131d",
+                      "secondary-fixed": "#eaddff",
+                      "surface-dim": "#10131d",
+                      "on-primary-fixed": "#001f27",
+                      "on-surface": "#e0e2f0",
+                      "on-primary-container": "#00586b",
+                      "on-secondary-container": "#d4c0ff",
+                      "on-secondary-fixed-variant": "#5700c8",
+                      "outline-variant": "#3c494e",
+                      "on-primary": "#003642",
+                      "inverse-on-surface": "#2d303b",
+                      "on-primary-fixed-variant": "#004e5f",
+                      "primary": "#a8e8ff",
+                      "primary-fixed": "#b4ebff",
+                      "error": "#ffb4ab",
+                      "on-tertiary-container": "#005d2d",
+                      "on-tertiary": "#003919",
+                      "on-tertiary-fixed": "#00210c",
+                      "surface-bright": "#363944",
+                      "inverse-primary": "#00677e",
+                      "secondary-fixed-dim": "#d1bcff",
+                      "secondary-container": "#6800ec",
+                      "on-surface-variant": "#bbc9cf",
+                      "primary-container": "#00d4ff",
+                      "error-container": "#93000a",
+                      "surface": "#10131d",
+                      "inverse-surface": "#e0e2f0",
+                      "tertiary-container": "#00df76",
+                      "surface-container": "#1c1f29",
+                      "on-secondary-fixed": "#24005b",
+                      "on-background": "#e0e2f0",
+                      "surface-tint": "#3cd7ff",
+                      "primary-fixed-dim": "#3cd7ff",
+                      "on-tertiary-fixed-variant": "#005228",
+                      "tertiary-fixed": "#60ff99",
+                      "on-error": "#690005",
+                      "surface-variant": "#31343f",
+                      "surface-container-lowest": "#0b0e17",
+                      "tertiary-fixed-dim": "#00e479",
+                      "surface-container-highest": "#31343f",
+                      "secondary": "#d1bcff",
+                      "surface-container-high": "#272a34",
+                      "tertiary": "#00ff88"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "fontFamily": {
+                      "headline": ["Space Grotesk"],
+                      "body": ["Inter"],
+                      "label": ["JetBrains Mono"]
+              }
+            },
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            font-size: 20px;
+        }
+        .orb-glow {
+            box-shadow: 0 0 80px 10px rgba(0, 212, 255, 0.15);
+        }
+        .glass-panel {
+            background: rgba(24, 27, 37, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 212, 255, 0.05);
+        }
+        body {
+            background-color: #03050d;
+        }
+    </style>
+</head>
+<body class="font-body text-on-surface overflow-hidden">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 h-16 bg-[#10131d]/80 backdrop-blur-xl shadow-[0_20px_40px_-10px_rgba(0,212,255,0.08)] border-b border-[#00d4ff]/10">
+<div class="flex items-center gap-4">
+<span class="text-2xl font-bold tracking-tighter text-[#00d4ff] drop-shadow-[0_0_8px_rgba(0,212,255,0.4)] font-headline">J.A.R.V.I.S.</span>
+<span class="h-4 w-px bg-outline-variant/30"></span>
+<span class="font-label text-[10px] tracking-[0.2em] text-outline uppercase">Just A Rather Very Intelligent System</span>
+</div>
+<nav class="hidden md:flex items-center space-x-8">
+<a class="text-[#00d4ff] font-bold border-b-2 border-[#00d4ff] font-headline tracking-widest uppercase text-xs pb-1 transition-all" href="#">SYSTEM_HEALTH:OPTIMAL</a>
+<a class="text-[#c8d6e5]/60 font-headline tracking-widest uppercase text-xs hover:bg-[#00d4ff]/5 hover:text-[#00d4ff] transition-all duration-300" href="#">UPTIME:99.9%</a>
+</nav>
+<div class="flex items-center gap-6">
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications_active</span>
+</button>
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-primary/20">
+<img alt="User Profile Avatar" class="h-full w-full object-cover" data-alt="Professional male avatar with neutral expression in a high-tech studio environment with soft blue lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxfUG1ifmW56Z3_gr4Nvs0zIaW8vWx53titou3TVcZsaHMpEJNpNvCLwcvyEElaH3-SMVPmHVjiizi9t-JxcLXUreiMxIDxkjSiT_PG8Twl7897NHMCksBTCwpcCDsro-ghs2FgDqtmitn_k_V2nzprLkG-uDIg1fnMX7yB8wjGaYpaJQuMRZNausW9zXlEAmjoyOhy5uqcjJC_XWd4_9P5m08fuXDZjqz18ahXVCj1EqMv8hID5akmCkUK-x8ivooyd246jpX8vxh"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-14 hover:w-64 transition-all duration-500 overflow-hidden z-40 bg-[#10131d] border-r border-[#00d4ff]/10 flex flex-col justify-between py-6 group">
+<div class="flex flex-col gap-2">
+<!-- Active Tab: Command Center -->
+<a class="flex items-center h-12 px-4 border-l-2 border-[#00d4ff] bg-[#00d4ff]/5 text-[#00d4ff] shadow-[inset_10px_0_15px_-10px_rgba(0,212,255,0.3)] transition-all" href="#">
+<span class="material-symbols-outlined shrink-0" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<span class="ml-6 font-label text-[10px] uppercase tracking-wider whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Command Center</span>
+</a>
+<a class="flex items-center h-12 px-4 text-[#c8d6e5]/40 grayscale hover:grayscale-0 hover:bg-[#00d4ff]/10 hover:text-[#00d4ff] transition-all" href="#">
+<span class="material-symbols-outlined shrink-0">psychology</span>
+<span class="ml-6 font-label text-[10px] uppercase tracking-wider whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Deep Study</span>
+</a>
+<a class="flex items-center h-12 px-4 text-[#c8d6e5]/40 grayscale hover:grayscale-0 hover:bg-[#00d4ff]/10 hover:text-[#00d4ff] transition-all" href="#">
+<span class="material-symbols-outlined shrink-0">ecg_heart</span>
+<span class="ml-6 font-label text-[10px] uppercase tracking-wider whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Bio Metrics</span>
+</a>
+<a class="flex items-center h-12 px-4 text-[#c8d6e5]/40 grayscale hover:grayscale-0 hover:bg-[#00d4ff]/10 hover:text-[#00d4ff] transition-all" href="#">
+<span class="material-symbols-outlined shrink-0">play_circle</span>
+<span class="ml-6 font-label text-[10px] uppercase tracking-wider whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Media Hub</span>
+</a>
+<a class="flex items-center h-12 px-4 text-[#c8d6e5]/40 grayscale hover:grayscale-0 hover:bg-[#00d4ff]/10 hover:text-[#00d4ff] transition-all" href="#">
+<span class="material-symbols-outlined shrink-0">developer_board</span>
+<span class="ml-6 font-label text-[10px] uppercase tracking-wider whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">PC Diagnostics</span>
+</a>
+</div>
+<div class="px-4">
+<button class="w-full flex items-center justify-center bg-primary-container text-on-primary py-2 rounded-sm scale-95 active:opacity-80 transition-transform">
+<span class="material-symbols-outlined">bolt</span>
+<span class="ml-2 font-label text-[10px] uppercase tracking-wider whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">SWITCH_TO_GAME_MODE</span>
+</button>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="ml-14 mt-16 p-12 h-[calc(100vh-64px)] relative flex flex-col items-center justify-center overflow-hidden">
+<!-- Ambient Background Decoration -->
+<div class="absolute inset-0 z-0 pointer-events-none opacity-20">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-primary/5 rounded-full"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-primary/10 rounded-full"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-primary/20 rounded-full"></div>
+</div>
+<!-- Centerpiece AI Core -->
+<div class="relative z-10 flex flex-col items-center">
+<div class="relative w-64 h-64 rounded-full flex items-center justify-center group">
+<!-- Glowing Core -->
+<div class="absolute inset-0 bg-primary/10 rounded-full blur-[60px] animate-pulse"></div>
+<div class="relative w-48 h-48 rounded-full orb-glow glass-panel flex items-center justify-center border border-primary/30 overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent"></div>
+<!-- Recursive Circles for 'Core' visual -->
+<div class="w-32 h-32 rounded-full border border-primary/20 animate-[spin_10s_linear_infinite]"></div>
+<div class="absolute w-24 h-24 rounded-full border border-secondary/30 animate-[spin_15s_linear_infinite_reverse]"></div>
+<div class="absolute w-12 h-12 bg-primary/40 rounded-full blur-sm"></div>
+</div>
+<!-- Data Nodes Floating Around -->
+<div class="absolute -top-4 -right-12 glass-panel p-3 rounded-lg border border-primary/20">
+<div class="font-label text-[10px] text-primary">CORE_TEMP</div>
+<div class="font-headline text-lg">34.2°C</div>
+</div>
+<div class="absolute -bottom-8 -left-16 glass-panel p-3 rounded-lg border border-primary/20">
+<div class="font-label text-[10px] text-tertiary">NODES_ACTIVE</div>
+<div class="font-headline text-lg">1,024</div>
+</div>
+</div>
+<div class="mt-12 text-center max-w-2xl">
+<h1 class="font-headline text-5xl md:text-6xl font-bold tracking-tight text-on-surface mb-2">SYSTEM_ACTIVE</h1>
+<p class="font-label text-outline tracking-widest text-sm uppercase">Cognitive Architecture Fully Operational</p>
+</div>
+</div>
+<!-- Bento Grid Stats Section -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 w-full max-w-5xl z-10">
+<!-- Health Card -->
+<div class="glass-panel p-6 rounded-lg relative overflow-hidden group hover:bg-surface-container-high transition-colors">
+<div class="absolute top-0 right-0 p-4">
+<span class="material-symbols-outlined text-tertiary">verified_user</span>
+</div>
+<div class="font-label text-[9px] text-outline mb-1 uppercase tracking-widest">SEC_001 // SYSTEM_HEALTH</div>
+<h3 class="font-headline text-2xl text-on-surface">NOMINAL</h3>
+<div class="mt-4 flex items-center gap-2">
+<div class="h-1 flex-1 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-[94%]"></div>
+</div>
+<span class="font-label text-[10px] text-tertiary">94.8%</span>
+</div>
+</div>
+<!-- Memory Card -->
+<div class="glass-panel p-6 rounded-lg relative overflow-hidden group hover:bg-surface-container-high transition-colors">
+<div class="absolute top-0 right-0 p-4">
+<span class="material-symbols-outlined text-primary">memory</span>
+</div>
+<div class="font-label text-[9px] text-outline mb-1 uppercase tracking-widest">SEC_002 // NEURAL_LOAD</div>
+<h3 class="font-headline text-2xl text-on-surface">12.4 TB/s</h3>
+<div class="mt-4 flex items-center gap-2">
+<div class="h-1 flex-1 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[32%]"></div>
+</div>
+<span class="font-label text-[10px] text-primary">32.1%</span>
+</div>
+</div>
+<!-- Uptime Card -->
+<div class="glass-panel p-6 rounded-lg relative overflow-hidden group hover:bg-surface-container-high transition-colors">
+<div class="absolute top-0 right-0 p-4">
+<span class="material-symbols-outlined text-secondary">schedule</span>
+</div>
+<div class="font-label text-[9px] text-outline mb-1 uppercase tracking-widest">SEC_003 // UPTIME_CYCLES</div>
+<h3 class="font-headline text-2xl text-on-surface">1,421:09</h3>
+<div class="mt-4 font-label text-[10px] text-secondary flex justify-between">
+<span>STABLE_CONNECTION</span>
+<span class="material-symbols-outlined text-[12px] leading-none">wifi</span>
+</div>
+</div>
+</div>
+<!-- Footer Overlay -->
+<footer class="absolute bottom-6 right-8 flex items-center gap-4 z-20 pointer-events-none">
+<div class="text-right">
+<p class="font-label text-[10px] text-outline/60 uppercase tracking-widest">Built by Niharu Shin</p>
+<p class="font-label text-[10px] text-outline/40 mt-1">v1.0 — Edge AI Ecosystem</p>
+</div>
+<div class="h-8 w-px bg-outline-variant/20"></div>
+<div class="flex items-center gap-2 text-tertiary opacity-80">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-label text-[10px] tracking-widest uppercase">Verified System Authenticated</span>
+</div>
+</footer>
+<!-- Bottom Right Action (Hidden FAB Suppression per logic, but subtle indicator kept) -->
+<div class="absolute bottom-8 left-20 z-20">
+<div class="flex gap-4">
+<div class="flex flex-col">
+<span class="font-label text-[8px] text-outline/50 uppercase tracking-tighter">LATENCY</span>
+<span class="font-label text-[11px] text-primary">2ms</span>
+</div>
+<div class="flex flex-col border-l border-outline-variant/30 pl-4">
+<span class="font-label text-[8px] text-outline/50 uppercase tracking-tighter">LOC</span>
+<span class="font-label text-[11px] text-primary">S_POINT_OSLO</span>
+</div>
+</div>
+</div>
+</main>
+</body></html>
