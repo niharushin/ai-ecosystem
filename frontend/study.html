@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>J.A.R.V.I.S. // Deep Study Assistant</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&amp;family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@400;500&amp;family=Rajdhani:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary": "#3d0090",
+                      "surface-container-low": "#181b25",
+                      "on-error-container": "#ffdad6",
+                      "outline": "#859398",
+                      "background": "#03050d",
+                      "secondary-fixed": "#eaddff",
+                      "surface-dim": "#10131d",
+                      "on-primary-fixed": "#001f27",
+                      "on-surface": "#e0e2f0",
+                      "on-primary-container": "#00586b",
+                      "on-secondary-container": "#d4c0ff",
+                      "on-secondary-fixed-variant": "#5700c8",
+                      "outline-variant": "#3c494e",
+                      "on-primary": "#003642",
+                      "inverse-on-surface": "#2d303b",
+                      "on-primary-fixed-variant": "#004e5f",
+                      "primary": "#a8e8ff",
+                      "primary-fixed": "#b4ebff",
+                      "error": "#ffb4ab",
+                      "on-tertiary-container": "#005d2d",
+                      "on-tertiary": "#003919",
+                      "on-tertiary-fixed": "#00210c",
+                      "surface-bright": "#363944",
+                      "inverse-primary": "#00677e",
+                      "secondary-fixed-dim": "#d1bcff",
+                      "secondary-container": "#7b2fff",
+                      "on-surface-variant": "#bbc9cf",
+                      "primary-container": "#00d4ff",
+                      "error-container": "#93000a",
+                      "surface": "#10131d",
+                      "inverse-surface": "#e0e2f0",
+                      "tertiary-container": "#00df76",
+                      "surface-container": "#1c1f29",
+                      "on-secondary-fixed": "#24005b",
+                      "on-background": "#e0e2f0",
+                      "surface-tint": "#3cd7ff",
+                      "primary-fixed-dim": "#3cd7ff",
+                      "on-tertiary-fixed-variant": "#005228",
+                      "tertiary-fixed": "#60ff99",
+                      "on-error": "#690005",
+                      "surface-variant": "#31343f",
+                      "surface-container-lowest": "#0b0e17",
+                      "tertiary-fixed-dim": "#00e479",
+                      "surface-container-highest": "#31343f",
+                      "secondary": "#7b2fff",
+                      "surface-container-high": "#272a34",
+                      "tertiary": "#ffb000"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "fontFamily": {
+                      "headline": ["Space Grotesk"],
+                      "body": ["Inter"],
+                      "label": ["JetBrains Mono"],
+                      "timer": ["Rajdhani"]
+              }
+            },
+          }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(24, 27, 37, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 212, 255, 0.05);
+        }
+        .glow-amber {
+            text-shadow: 0 0 12px rgba(255, 176, 0, 0.4);
+        }
+        .glow-cyan {
+            text-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(123, 47, 255, 0.2); border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body overflow-hidden">
+<!-- Top Navigation Anchor -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 h-16 bg-[#10131d]/80 backdrop-blur-xl border-b border-[#00d4ff]/10 shadow-[0_20px_40px_-10px_rgba(0,212,255,0.08)]">
+<div class="flex items-center gap-6">
+<span class="text-2xl font-bold tracking-tighter text-[#00d4ff] drop-shadow-[0_0_8px_rgba(0,212,255,0.4)] font-['Space_Grotesk']">J.A.R.V.I.S.</span>
+<nav class="hidden md:flex gap-8">
+<a class="text-[#00d4ff] font-bold border-b-2 border-[#00d4ff] font-['Space_Grotesk'] tracking-widest uppercase text-xs" href="#">SYSTEM_HEALTH:OPTIMAL</a>
+<a class="text-[#c8d6e5]/60 hover:bg-[#00d4ff]/5 hover:text-[#00d4ff] transition-all duration-300 font-['Space_Grotesk'] tracking-widest uppercase text-xs" href="#">UPTIME:99.9%</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-[#c8d6e5]/60 hover:text-[#00d4ff] transition-colors">notifications_active</button>
+<button class="material-symbols-outlined text-[#c8d6e5]/60 hover:text-[#00d4ff] transition-colors">settings</button>
+<div class="w-8 h-8 rounded-full border border-[#00d4ff]/20 overflow-hidden">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="Abstract geometric avatar icon with cool blue and deep purple tech patterns" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGzbTqUWCibtyd7ke6EL8ZHRChVNsebkJp6Rk-fFwRyGJHfN0sW7vwWgGIedFy8eFONBDGetoS4Dp0AjryRpd8wweRka1nio__bYkUpaYlCpyMIr6aLKiRIjaJDA19FeG1S-b1bpU7i5Ggoin-nV6NNLkVOunVDAh0gtEuE_LjJpBFUTIRV618WKm4DLBR8m2IB5TlV_7I1zL6cYkVzDJJL4j0TteSS01hUrXHFKqetQe2TBdERe7Sf4udwUqLC5187AgVKGaynMBE"/>
+</div>
+</div>
+</header>
+<!-- Side Navigation Anchor -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-14 hover:w-64 transition-all duration-500 overflow-hidden z-40 bg-[#10131d] border-r border-[#00d4ff]/10 group flex flex-col justify-between py-6">
+<div class="flex flex-col gap-2">
+<!-- Active Tab: Deep Study -->
+<div class="flex items-center h-12 border-l-2 border-[#00d4ff] bg-[#00d4ff]/5 text-[#00d4ff] shadow-[inset_10px_0_15px_-10px_rgba(0,212,255,0.3)] cursor-pointer">
+<span class="material-symbols-outlined min-w-[56px] text-center" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-wider whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Deep Study</span>
+</div>
+<div class="flex items-center h-12 text-[#c8d6e5]/40 grayscale hover:grayscale-0 hover:bg-[#00d4ff]/10 hover:text-[#00d4ff] transition-all cursor-pointer">
+<span class="material-symbols-outlined min-w-[56px] text-center">terminal</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-wider whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Command Center</span>
+</div>
+<div class="flex items-center h-12 text-[#c8d6e5]/40 grayscale hover:grayscale-0 hover:bg-[#00d4ff]/10 hover:text-[#00d4ff] transition-all cursor-pointer">
+<span class="material-symbols-outlined min-w-[56px] text-center">ecg_heart</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-wider whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Bio Metrics</span>
+</div>
+<div class="flex items-center h-12 text-[#c8d6e5]/40 grayscale hover:grayscale-0 hover:bg-[#00d4ff]/10 hover:text-[#00d4ff] transition-all cursor-pointer">
+<span class="material-symbols-outlined min-w-[56px] text-center">play_circle</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-wider whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Media Hub</span>
+</div>
+<div class="flex items-center h-12 text-[#c8d6e5]/40 grayscale hover:grayscale-0 hover:bg-[#00d4ff]/10 hover:text-[#00d4ff] transition-all cursor-pointer">
+<span class="material-symbols-outlined min-w-[56px] text-center">developer_board</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-wider whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">PC Diagnostics</span>
+</div>
+</div>
+<div class="px-3">
+<button class="w-full bg-secondary-container text-white py-2 rounded-sm text-[8px] font-bold tracking-widest opacity-0 group-hover:opacity-100 transition-opacity uppercase">SWITCH_TO_GAME_MODE</button>
+<div class="mt-4 flex items-center gap-4 text-[#c8d6e5]/20">
+<span class="material-symbols-outlined min-w-[32px] text-sm">verified_user</span>
+<span class="font-['JetBrains_Mono'] text-[8px] whitespace-nowrap opacity-0 group-hover:opacity-100">v1.0 // Niharu Shin</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-14 mt-16 p-8 h-[calc(100vh-64px)] grid grid-cols-12 grid-rows-6 gap-6">
+<!-- LARGE FOCUS TIMER (Hero Section) -->
+<section class="col-span-12 lg:col-span-8 row-span-3 glass-panel rounded-xl p-8 flex flex-col justify-center relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 font-label text-[10px] text-primary/40 uppercase tracking-widest">
+                SESSION_ID: FF-0492 // STATE: ACTIVE_FOCUS
+            </div>
+<div class="flex flex-col items-center">
+<span class="font-label text-secondary tracking-[0.3em] text-xs mb-4">OPTIMIZING COGNITIVE FLOW</span>
+<h1 class="font-timer text-[10rem] leading-none font-bold text-on-surface glow-cyan flex items-center">
+                    24<span class="animate-pulse opacity-50">:</span>59
+                </h1>
+<div class="flex gap-6 mt-8">
+<button class="px-10 py-3 bg-secondary-container text-white font-headline tracking-widest uppercase text-sm rounded-sm hover:scale-105 transition-transform active:opacity-80">
+                        PAUSE_FLOW
+                    </button>
+<button class="px-10 py-3 border border-secondary/30 text-secondary font-headline tracking-widest uppercase text-sm rounded-sm hover:bg-secondary/10 transition-colors">
+                        RESET_CYCLE
+                    </button>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="absolute bottom-0 left-0 w-full h-1 bg-surface-container-highest">
+<div class="h-full bg-secondary" style="width: 82%;"></div>
+</div>
+</section>
+<!-- COGNITIVE LOAD METRICS -->
+<section class="col-span-12 lg:col-span-4 row-span-3 glass-panel rounded-xl p-6 flex flex-col gap-6">
+<header class="flex justify-between items-end border-b border-outline-variant/20 pb-4">
+<div>
+<h2 class="font-headline text-lg uppercase tracking-wider text-primary">Bio Metrics</h2>
+<p class="font-label text-[9px] text-outline">NEURAL_TELEMETRY_STREAM</p>
+</div>
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</header>
+<div class="space-y-6">
+<!-- Metric 1 -->
+<div>
+<div class="flex justify-between text-[10px] font-label uppercase mb-2">
+<span>Cognitive Load</span>
+<span class="text-primary">64%</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-lowest rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 64%;"></div>
+</div>
+</div>
+<!-- Metric 2 -->
+<div>
+<div class="flex justify-between text-[10px] font-label uppercase mb-2">
+<span>Focus Density</span>
+<span class="text-tertiary">High</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-lowest rounded-full overflow-hidden">
+<div class="h-full bg-tertiary" style="width: 89%;"></div>
+</div>
+</div>
+<!-- Metric 3 -->
+<div>
+<div class="flex justify-between text-[10px] font-label uppercase mb-2">
+<span>System Anxiety</span>
+<span class="text-secondary">Low</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-lowest rounded-full overflow-hidden">
+<div class="h-full bg-secondary" style="width: 12%;"></div>
+</div>
+</div>
+</div>
+<!-- Visualization placeholder -->
+<div class="mt-auto h-24 relative">
+<img alt="Pulse data visualization" class="w-full h-full object-cover opacity-30 rounded-lg" data-alt="A futuristic medical scan waveform or pulse chart with glowing neon cyan lines on a dark blue tech background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwcPuc7uZlD4NxlA39Rv2OfVCO0_Yj8tV3sJAvzHZtXn2eCr6Wv4zdzNL1Uq7Ch974GmmV-XdFfqZTQ4ww4Orl5LXoJZxGgTG3nZLGV_a17BHyKEjX6wgaqAV3uCNPHbYvlYKeRjseLiDs_poHlR2jnnXrBKn2mO0U-u2exeHRy3DaXzcgpvYMQuwyYfYjgtisBEdFXa_KOLvCGtYuS3jYtzcK5qIDcQl-8hdWoVefzN4c6T2HMjnsI26axZRKcXfy_8RBYqDGFI8z"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+</div>
+</section>
+<!-- DOCUMENTATION VIEWER -->
+<section class="col-span-12 lg:col-span-7 row-span-3 glass-panel rounded-xl flex flex-col overflow-hidden">
+<div class="flex items-center justify-between px-6 py-4 bg-surface-container-high/40 border-b border-outline-variant/10">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-xs text-primary">description</span>
+<h3 class="font-label text-xs uppercase tracking-widest text-on-surface">Core_System_Architecture.md</h3>
+</div>
+<div class="flex gap-2">
+<div class="w-2 h-2 rounded-full bg-error/40"></div>
+<div class="w-2 h-2 rounded-full bg-tertiary/40"></div>
+<div class="w-2 h-2 rounded-full bg-primary/40"></div>
+</div>
+</div>
+<div class="p-8 font-label text-sm leading-relaxed text-outline-variant overflow-y-auto custom-scrollbar">
+<p class="text-primary/80 mb-4"># Architecture Overview</p>
+<p class="mb-4">The J.A.R.V.I.S. framework utilizes a distributed edge-computing model to minimize latency in cognitive assist tasks. By leveraging local neural processing units (NPUs), we ensure that high-fidelity study metrics are processed on-device.</p>
+<p class="text-secondary/80 mb-2">## Primary Logic Clusters</p>
+<ul class="list-none space-y-2 mb-6">
+<li class="flex gap-4"><span class="text-primary font-bold">01</span><span>Decentralized Memory Fabric</span></li>
+<li class="flex gap-4"><span class="text-primary font-bold">02</span><span>Quantum-Resistant Encryption</span></li>
+<li class="flex gap-4"><span class="text-primary font-bold">03</span><span>Adaptive Heuristic Optimization</span></li>
+</ul>
+<p class="text-primary/80 mb-4"># Security Protocols</p>
+<p>All biometric data streams are hashed via SHA-512 before being cached in the volatile memory sandbox. This prevents long-term storage of sensitive user-focus patterns while maintaining session-level continuity.</p>
+</div>
+</section>
+<!-- TASK BOARD -->
+<section class="col-span-12 lg:col-span-5 row-span-3 glass-panel rounded-xl p-6 flex flex-col gap-4">
+<h3 class="font-headline text-md uppercase tracking-wider text-tertiary flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">assignment</span>
+                Session Goals
+            </h3>
+<div class="space-y-3 overflow-y-auto pr-2">
+<!-- Task 1 -->
+<div class="group flex items-center gap-4 p-4 rounded-lg bg-surface-container-highest/20 border border-outline-variant/10 hover:border-tertiary/30 transition-all cursor-pointer">
+<div class="w-5 h-5 border border-tertiary/50 rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary text-lg" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-semibold text-on-surface">Review Module 04: Data Fabric</p>
+<p class="text-[10px] font-label text-outline uppercase tracking-tighter">Completed 14:20</p>
+</div>
+</div>
+<!-- Task 2 -->
+<div class="group flex items-center gap-4 p-4 rounded-lg bg-surface-container-high border border-primary/20 shadow-[0_0_15px_rgba(0,212,255,0.05)] cursor-pointer">
+<div class="w-5 h-5 border border-primary/50 rounded"></div>
+<div class="flex-1">
+<p class="text-sm font-semibold text-on-surface">Synthesize AI Governance Whitepaper</p>
+<p class="text-[10px] font-label text-primary uppercase tracking-tighter">Current Objective</p>
+</div>
+<span class="material-symbols-outlined text-primary text-sm animate-pulse">hourglass_top</span>
+</div>
+<!-- Task 3 -->
+<div class="group flex items-center gap-4 p-4 rounded-lg bg-surface-container-highest/10 border border-outline-variant/5 hover:border-outline-variant/30 transition-all cursor-pointer opacity-60">
+<div class="w-5 h-5 border border-outline-variant/40 rounded"></div>
+<div class="flex-1">
+<p class="text-sm font-semibold text-on-surface">Execute Regression Testing Suite</p>
+<p class="text-[10px] font-label text-outline uppercase tracking-tighter">Pending Buffer</p>
+</div>
+</div>
+</div>
+<button class="mt-auto w-full py-4 border-2 border-dashed border-outline-variant/20 rounded-lg text-outline-variant font-label text-xs uppercase tracking-widest hover:border-primary/40 hover:text-primary transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">add</span>
+                Append_Task
+            </button>
+</section>
+</main>
+<!-- Branding Footnote Anchor -->
+<footer class="fixed bottom-4 right-8 z-50 pointer-events-none">
+<span class="font-label text-[9px] text-outline-variant uppercase tracking-widest bg-background/80 px-3 py-1 rounded-full backdrop-blur-md">Built by Niharu Shin — Version v1.0</span>
+</footer>
+</body></html>
