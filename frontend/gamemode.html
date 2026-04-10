@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>J.A.R.V.I.S. // GAME_MODE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&amp;family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@400;500&amp;family=Rajdhani:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary": "#3d0090",
+                        "surface-container-low": "#181b25",
+                        "on-error-container": "#ffdad6",
+                        "outline": "#859398",
+                        "background": "#03050d",
+                        "secondary-fixed": "#eaddff",
+                        "surface-dim": "#10131d",
+                        "on-primary-fixed": "#001f27",
+                        "on-surface": "#e0e2f0",
+                        "on-primary-container": "#00586b",
+                        "on-secondary-container": "#d4c0ff",
+                        "on-secondary-fixed-variant": "#5700c8",
+                        "outline-variant": "#3c494e",
+                        "on-primary": "#003642",
+                        "inverse-on-surface": "#2d303b",
+                        "on-primary-fixed-variant": "#004e5f",
+                        "primary": "#a8e8ff",
+                        "primary-fixed": "#b4ebff",
+                        "error": "#ffb4ab",
+                        "on-tertiary-container": "#005d2d",
+                        "on-tertiary": "#003919",
+                        "on-tertiary-fixed": "#00210c",
+                        "surface-bright": "#363944",
+                        "inverse-primary": "#00677e",
+                        "secondary-fixed-dim": "#d1bcff",
+                        "secondary-container": "#6800ec",
+                        "on-surface-variant": "#bbc9cf",
+                        "primary-container": "#00d4ff",
+                        "error-container": "#93000a",
+                        "surface": "#10131d",
+                        "inverse-surface": "#e0e2f0",
+                        "tertiary-container": "#00df76",
+                        "surface-container": "#1c1f29",
+                        "on-secondary-fixed": "#24005b",
+                        "on-background": "#e0e2f0",
+                        "surface-tint": "#3cd7ff",
+                        "primary-fixed-dim": "#3cd7ff",
+                        "on-tertiary-fixed-variant": "#005228",
+                        "tertiary-fixed": "#60ff99",
+                        "on-error": "#690005",
+                        "surface-variant": "#31343f",
+                        "surface-container-lowest": "#0b0e17",
+                        "tertiary-fixed-dim": "#00e479",
+                        "surface-container-highest": "#31343f",
+                        "secondary": "#d1bcff",
+                        "surface-container-high": "#272a34",
+                        "tertiary": "#00ff88"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["JetBrains Mono"],
+                        "data": ["Rajdhani"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-panel {
+            background: rgba(24, 27, 37, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+        }
+        .scanline {
+            background: linear-gradient(to bottom, transparent 50%, rgba(0, 212, 255, 0.02) 50%);
+            background-size: 100% 4px;
+        }
+        .glow-cyan { text-shadow: 0 0 10px rgba(0, 212, 255, 0.5); }
+        .glow-purple { text-shadow: 0 0 10px rgba(123, 47, 255, 0.5); }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30 overflow-hidden">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 h-16 bg-[#10131d]/80 backdrop-blur-xl border-b border-[#00d4ff]/10 shadow-[0_20px_40px_-10px_rgba(0,212,255,0.08)]">
+<div class="flex items-center gap-6">
+<span class="text-2xl font-bold tracking-tighter text-[#00d4ff] drop-shadow-[0_0_8px_rgba(0,212,255,0.4)] font-['Space_Grotesk'] uppercase">J.A.R.V.I.S.</span>
+<nav class="hidden md:flex items-center gap-8 font-['Space_Grotesk'] tracking-widest uppercase text-[10px]">
+<a class="text-[#00d4ff] font-bold border-b-2 border-[#00d4ff] py-1" href="#">SYSTEM_HEALTH:OPTIMAL</a>
+<a class="text-[#c8d6e5]/60 hover:bg-[#00d4ff]/5 hover:text-[#00d4ff] transition-all duration-300 py-1" href="#">UPTIME:99.9%</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4">
+<button class="material-symbols-outlined text-[#c8d6e5]/60 hover:text-[#00d4ff] transition-all">settings</button>
+<button class="material-symbols-outlined text-[#00d4ff]">notifications_active</button>
+</div>
+<div class="w-8 h-8 rounded-full border border-[#00d4ff]/30 overflow-hidden">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="Cyberpunk style user profile avatar with neon cyan highlights and futuristic headset" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2o673FC5_ofxhtAWfohMpeeOo7N90pcI3HVhIBCBINfXMZz-W1CZjSzGnwXpqPczgkt7XrbNGV6VnGs1r2z4yJoxL8yyqx-aDA6u72bQIdfPK6ao7yhacEadQ3laPon14GQg2wjo4eaYqUSZI71rQAGAqcrn8oPYxg23o9RDTFYihXdgP5u5ixwG4v7V7hwH_PexgUABr-jHp8pqDHxj2fXTTFXdTEkvRTc2NIdbxTSvKfNHy8afowjrREYNygUK7QJfZlZY94aB8"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-14 hover:w-64 transition-all duration-500 overflow-hidden z-40 bg-[#10131d] border-r border-[#00d4ff]/10 flex flex-col justify-between py-6">
+<div class="flex flex-col gap-2">
+<!-- Active: Command Center -->
+<a class="flex items-center gap-4 px-4 py-3 border-l-2 border-[#00d4ff] bg-[#00d4ff]/5 text-[#00d4ff] shadow-[inset_10px_0_15px_-10px_rgba(0,212,255,0.3)] transition-all" href="#">
+<span class="material-symbols-outlined shrink-0" data-weight="fill" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-wider whitespace-nowrap">Command Center</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#c8d6e5]/40 grayscale hover:grayscale-0 hover:bg-[#00d4ff]/10 hover:text-[#00d4ff] transition-all" href="#">
+<span class="material-symbols-outlined shrink-0">psychology</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-wider whitespace-nowrap">Deep Study</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#c8d6e5]/40 grayscale hover:grayscale-0 hover:bg-[#00d4ff]/10 hover:text-[#00d4ff] transition-all" href="#">
+<span class="material-symbols-outlined shrink-0">ecg_heart</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-wider whitespace-nowrap">Bio Metrics</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#c8d6e5]/40 grayscale hover:grayscale-0 hover:bg-[#00d4ff]/10 hover:text-[#00d4ff] transition-all" href="#">
+<span class="material-symbols-outlined shrink-0">play_circle</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-wider whitespace-nowrap">Media Hub</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#c8d6e5]/40 grayscale hover:grayscale-0 hover:bg-[#00d4ff]/10 hover:text-[#00d4ff] transition-all" href="#">
+<span class="material-symbols-outlined shrink-0">developer_board</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-wider whitespace-nowrap">PC Diagnostics</span>
+</a>
+</div>
+<div class="px-3 flex flex-col gap-4">
+<button class="bg-[#00d4ff] text-[#001f27] font-['JetBrains_Mono'] text-[10px] py-2 rounded-sm font-bold tracking-tighter overflow-hidden whitespace-nowrap hover:bg-[#a8e8ff] transition-colors">
+                SWITCH_TO_GAME_MODE
+            </button>
+<div class="flex items-center gap-4 text-[#c8d6e5]/20 px-1">
+<span class="material-symbols-outlined text-sm">verified_user</span>
+<span class="font-['JetBrains_Mono'] text-[8px] whitespace-nowrap">v1.0 // Niharu Shin</span>
+</div>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="ml-14 mt-16 p-8 h-[calc(100vh-64px)] overflow-y-auto scanline">
+<!-- Hero Section: The Boost -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+<div class="lg:col-span-8 flex flex-col justify-center">
+<div class="mb-2 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+<span class="font-label text-[10px] text-tertiary tracking-[0.2em] uppercase">System Ready // Game Protocol Activated</span>
+</div>
+<h1 class="font-headline text-6xl font-bold text-on-surface mb-4 tracking-tight leading-none">
+                    ENGINE_STATE: <span class="text-primary glow-cyan">OVERCLOCKED</span>
+</h1>
+<p class="font-body text-outline max-w-xl mb-8">
+                    Thermal margins at 14%. Neural link synchronized. All background processing suspended for maximum throughput.
+                </p>
+<div class="flex items-center gap-6">
+<button class="group relative flex items-center justify-center w-48 h-48 rounded-full border-4 border-secondary/20 bg-background overflow-hidden transition-all active:scale-95 shadow-[0_0_50px_-12px_rgba(123,47,255,0.5)]">
+<div class="absolute inset-0 bg-gradient-to-tr from-secondary/10 to-transparent"></div>
+<div class="absolute inset-0 border-4 border-primary/40 rounded-full animate-ping opacity-20"></div>
+<div class="relative z-10 flex flex-col items-center">
+<span class="font-data text-5xl font-bold text-white glow-purple">BOOST</span>
+<span class="font-label text-[8px] text-secondary tracking-widest mt-1">MAX_PERF</span>
+</div>
+</button>
+<div class="grid grid-cols-2 gap-4">
+<div class="glass-panel p-4 rounded-lg flex flex-col justify-between border-l-4 border-l-primary">
+<span class="font-label text-[9px] text-outline">CURRENT_LATENCY</span>
+<span class="font-data text-2xl font-bold text-primary">14 <span class="text-xs font-normal">MS</span></span>
+</div>
+<div class="glass-panel p-4 rounded-lg flex flex-col justify-between border-l-4 border-l-secondary">
+<span class="font-label text-[9px] text-outline">NETWORK_LOAD</span>
+<span class="font-data text-2xl font-bold text-secondary">0.02 <span class="text-xs font-normal">GB/S</span></span>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-4 glass-panel p-6 rounded-xl flex flex-col justify-between overflow-hidden relative">
+<div class="absolute top-0 right-0 p-2 opacity-10">
+<span class="material-symbols-outlined text-9xl">radar</span>
+</div>
+<div>
+<h3 class="font-headline text-xl mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">analytics</span>
+                        ACTIVE_PROCESSES
+                    </h3>
+<ul class="space-y-4 font-label text-[10px] text-on-surface">
+<li class="flex justify-between items-center p-2 bg-surface-container-high rounded border border-outline-variant/10">
+<span>CyberEngine.exe</span>
+<span class="text-primary">CORE_01 [92%]</span>
+</li>
+<li class="flex justify-between items-center p-2 bg-surface-container-high rounded border border-outline-variant/10">
+<span>Discord.overlay</span>
+<span class="text-outline">SUSPENDED</span>
+</li>
+<li class="flex justify-between items-center p-2 bg-surface-container-high rounded border border-outline-variant/10">
+<span>Nvidia_Broadcast</span>
+<span class="text-tertiary">STABLE</span>
+</li>
+<li class="flex justify-between items-center p-2 bg-surface-container-high rounded border border-outline-variant/10">
+<span>Spotify_Client</span>
+<span class="text-outline">SUSPENDED</span>
+</li>
+</ul>
+</div>
+<div class="mt-6 pt-6 border-t border-outline-variant/20">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label text-[9px] text-outline">TOTAL_MEMORY_USAGE</span>
+<span class="font-data text-sm text-primary">12.4 / 64 GB</span>
+</div>
+<div class="w-full h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 20%"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Data Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- CPU Card -->
+<div class="glass-panel p-6 rounded-xl relative overflow-hidden group">
+<div class="flex justify-between items-start mb-6">
+<div>
+<p class="font-label text-[9px] text-outline tracking-widest">CENTRAL_PROCESSING</p>
+<h4 class="font-headline text-lg font-bold">CPU_USAGE</h4>
+</div>
+<span class="font-data text-3xl font-bold text-primary">42%</span>
+</div>
+<div class="h-24 flex items-end gap-1">
+<div class="flex-1 bg-primary/20 h-[40%]"></div>
+<div class="flex-1 bg-primary/20 h-[30%]"></div>
+<div class="flex-1 bg-primary/20 h-[60%]"></div>
+<div class="flex-1 bg-primary/20 h-[45%]"></div>
+<div class="flex-1 bg-primary/40 h-[80%]"></div>
+<div class="flex-1 bg-primary h-[42%]"></div>
+<div class="flex-1 bg-primary/30 h-[50%]"></div>
+<div class="flex-1 bg-primary/10 h-[20%]"></div>
+</div>
+<div class="mt-4 flex justify-between font-label text-[8px] text-outline">
+<span>5.2 GHz CLK</span>
+<span>16 CORES / 32 THREADS</span>
+</div>
+</div>
+<!-- GPU Card -->
+<div class="glass-panel p-6 rounded-xl relative overflow-hidden group">
+<div class="flex justify-between items-start mb-6">
+<div>
+<p class="font-label text-[9px] text-outline tracking-widest">GRAPHICS_ENGINE</p>
+<h4 class="font-headline text-lg font-bold">GPU_LOAD</h4>
+</div>
+<span class="font-data text-3xl font-bold text-secondary">88%</span>
+</div>
+<div class="h-24 flex items-end gap-1">
+<div class="flex-1 bg-secondary/20 h-[70%]"></div>
+<div class="flex-1 bg-secondary/20 h-[85%]"></div>
+<div class="flex-1 bg-secondary/40 h-[92%]"></div>
+<div class="flex-1 bg-secondary h-[88%]"></div>
+<div class="flex-1 bg-secondary/60 h-[75%]"></div>
+<div class="flex-1 bg-secondary/30 h-[90%]"></div>
+<div class="flex-1 bg-secondary/10 h-[60%]"></div>
+<div class="flex-1 bg-secondary/50 h-[82%]"></div>
+</div>
+<div class="mt-4 flex justify-between font-label text-[8px] text-outline">
+<span>VRAM: 14.2/24 GB</span>
+<span>TEMP: 68°C</span>
+</div>
+</div>
+<!-- FPS Monitor -->
+<div class="glass-panel p-6 rounded-xl flex flex-col justify-between border-t-2 border-t-tertiary">
+<div>
+<p class="font-label text-[9px] text-outline tracking-widest uppercase">Visual_Output</p>
+<h4 class="font-headline text-lg font-bold">FPS_MONITOR</h4>
+</div>
+<div class="py-2 text-center">
+<span class="font-data text-6xl font-bold text-on-surface">144</span>
+<p class="font-label text-[10px] text-tertiary tracking-[0.4em]">STABLE_LOCK</p>
+</div>
+<div class="flex justify-between font-label text-[8px] text-outline">
+<span>MIN: 138</span>
+<span>AVG: 142</span>
+<span>MAX: 144</span>
+</div>
+</div>
+<!-- Thermal Map -->
+<div class="glass-panel p-6 rounded-xl flex flex-col justify-between bg-gradient-to-br from-background to-surface-container-low">
+<div>
+<p class="font-label text-[9px] text-outline tracking-widest uppercase">Thermodynamics</p>
+<h4 class="font-headline text-lg font-bold">THERMAL_ZONE</h4>
+</div>
+<div class="relative h-20 w-full bg-surface-container rounded-sm overflow-hidden border border-outline-variant/10">
+<div class="absolute inset-0 bg-gradient-to-r from-primary/20 via-tertiary/20 to-error/40 blur-xl"></div>
+<div class="absolute top-1/2 left-1/4 w-4 h-4 bg-primary blur-md rounded-full"></div>
+<div class="absolute top-1/3 right-1/4 w-8 h-8 bg-error/50 blur-lg rounded-full"></div>
+<div class="relative z-10 flex items-center justify-center h-full">
+<span class="font-data text-xl text-white">42.8°C</span>
+</div>
+</div>
+<p class="font-label text-[8px] text-outline text-center mt-2 italic">AIO Liquid Temp: 32°C // OK</p>
+</div>
+</section>
+<!-- Bottom Status Bar -->
+<footer class="mt-12 flex flex-wrap items-center justify-between gap-6 pb-12">
+<div class="flex items-center gap-8 font-label text-[10px] text-outline">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span>DLSS_BALANCED: ACTIVE</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>RAY_TRACING: ULTRA</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<span>LATENCY_REDUX: ENABLED</span>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="glass-panel px-6 py-2 rounded font-label text-[10px] hover:bg-primary/10 hover:text-primary transition-all">DUMP_LOGS</button>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded font-label text-[10px] font-bold hover:brightness-110 transition-all">SNAPSHOT_ENV</button>
+</div>
+</footer>
+</main>
+<!-- Visual Accents -->
+<div class="fixed bottom-4 right-8 z-50 pointer-events-none">
+<p class="font-label text-[9px] text-outline-variant tracking-widest opacity-50">
+            SEC_ID: 882-GAME-A // <span class="text-outline">Built by Niharu Shin — Version v1.0</span>
+</p>
+</div>
+</body></html>
