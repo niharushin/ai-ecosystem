@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&amp;family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#3d0090",
+                        "surface-container-low": "#181b25",
+                        "on-error-container": "#ffdad6",
+                        "outline": "#859398",
+                        "background": "#03050d",
+                        "secondary-fixed": "#eaddff",
+                        "surface-dim": "#10131d",
+                        "on-primary-fixed": "#001f27",
+                        "on-surface": "#e0e2f0",
+                        "on-primary-container": "#00586b",
+                        "on-secondary-container": "#d4c0ff",
+                        "on-secondary-fixed-variant": "#5700c8",
+                        "outline-variant": "#3c494e",
+                        "on-primary": "#003642",
+                        "inverse-on-surface": "#2d303b",
+                        "on-primary-fixed-variant": "#004e5f",
+                        "primary": "#a8e8ff",
+                        "primary-fixed": "#b4ebff",
+                        "error": "#ffb4ab",
+                        "on-tertiary-container": "#005d2d",
+                        "on-tertiary": "#003919",
+                        "on-tertiary-fixed": "#00210c",
+                        "surface-bright": "#363944",
+                        "inverse-primary": "#00677e",
+                        "secondary-fixed-dim": "#d1bcff",
+                        "secondary-container": "#6800ec",
+                        "on-surface-variant": "#bbc9cf",
+                        "primary-container": "#00d4ff",
+                        "error-container": "#93000a",
+                        "surface": "#10131d",
+                        "inverse-surface": "#e0e2f0",
+                        "tertiary-container": "#00df76",
+                        "surface-container": "#1c1f29",
+                        "on-secondary-fixed": "#24005b",
+                        "on-background": "#e0e2f0",
+                        "surface-tint": "#3cd7ff",
+                        "primary-fixed-dim": "#3cd7ff",
+                        "on-tertiary-fixed-variant": "#005228",
+                        "tertiary-fixed": "#60ff99",
+                        "on-error": "#690005",
+                        "surface-variant": "#31343f",
+                        "surface-container-lowest": "#0b0e17",
+                        "tertiary-fixed-dim": "#00e479",
+                        "surface-container-highest": "#31343f",
+                        "secondary": "#d1bcff",
+                        "surface-container-high": "#272a34",
+                        "tertiary": "#00ff88",
+                        "accent-gold": "#FFD700",
+                        "accent-gold-shimmer": "#FDB931"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["JetBrains Mono"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(24, 27, 37, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+        }
+        .gold-shimmer:hover {
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+            border-color: #FFD700;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .text-glow-gold {
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+        }
+        .system-ticker {
+            animation: slide 20s linear infinite;
+        }
+        @keyframes slide {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 h-16 bg-[#10131d]/80 backdrop-blur-xl border-b border-[#00d4ff]/10 shadow-[0_20px_40px_-10px_rgba(0,212,255,0.08)]">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold tracking-tighter text-[#00d4ff] drop-shadow-[0_0_8px_rgba(0,212,255,0.4)] font-headline">J.A.R.V.I.S.</span>
+<div class="hidden md:flex gap-6">
+<a class="text-[#00d4ff] font-bold border-b-2 border-[#00d4ff] font-headline tracking-widest uppercase text-xs" href="#">SYSTEM_HEALTH:OPTIMAL</a>
+<a class="text-[#c8d6e5]/60 hover:bg-[#00d4ff]/5 hover:text-[#00d4ff] transition-all duration-300 font-headline tracking-widest uppercase text-xs" href="#">UPTIME:99.9%</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative flex items-center bg-surface-container-low/50 px-4 py-1.5 rounded-full border border-outline-variant/30">
+<span class="material-symbols-outlined text-sm text-primary">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-[10px] font-label uppercase tracking-widest w-48" placeholder="QUERY_ARCHIVE..." type="text"/>
+</div>
+<div class="flex gap-4">
+<button class="material-symbols-outlined text-[#c8d6e5]/60 hover:text-primary transition-colors">notifications_active</button>
+<button class="material-symbols-outlined text-[#c8d6e5]/60 hover:text-primary transition-colors">settings</button>
+</div>
+<div class="w-8 h-8 rounded-full border border-primary/30 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="close up profile portrait of a man with blue digital reflections on his face cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpJVnwV48d7YDzmlLhHbtJn62N2EhCosjICKYrGBysadwALpJwBR1aSCRqaGZem483S2NntVzzqUeaFxS4qFKWxgneaDBQivKKtHkZYEdosM8I-Vkr-SRYZswfsfL6Ofy9ODCVpyrNCln72MAgIXG26WhgnLM0ujIEnvGznmdPomv-UI3ypHCLE0KDkX4IPuo5dwJ0l6siQL09kK5n0Gpgkjw0lsXa7npftEJtKOQ3xWco5rYruCKx5IjgctJsmy78-68DmCGCVnZb"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-14 hover:w-64 transition-all duration-500 overflow-hidden z-40 bg-[#10131d] border-r border-[#00d4ff]/10 group flex flex-col justify-between py-6">
+<div class="flex flex-col gap-2">
+<div class="flex items-center px-4 mb-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<div class="flex flex-col">
+<span class="font-headline font-bold text-primary tracking-tighter text-sm">JARVIS_OS</span>
+<span class="font-label text-[8px] text-outline uppercase">v1.0 — Edge AI</span>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<div class="flex items-center h-12 w-full text-[#c8d6e5]/40 hover:bg-[#00d4ff]/10 hover:text-[#00d4ff] transition-all duration-300 border-l-2 border-transparent group-hover:px-4 cursor-pointer">
+<span class="material-symbols-outlined min-w-[56px] text-center">play_circle</span>
+<span class="font-label text-[10px] uppercase tracking-wider whitespace-nowrap opacity-0 group-hover:opacity-100">Media Hub</span>
+</div>
+<div class="flex items-center h-12 w-full text-[#00d4ff] bg-[#00d4ff]/5 border-l-2 border-[#00d4ff] shadow-[inset_10px_0_15px_-10px_rgba(0,212,255,0.3)] group-hover:px-4 cursor-pointer">
+<span class="material-symbols-outlined min-w-[56px] text-center">terminal</span>
+<span class="font-label text-[10px] uppercase tracking-wider whitespace-nowrap opacity-0 group-hover:opacity-100">Command Center</span>
+</div>
+<div class="flex items-center h-12 w-full text-[#c8d6e5]/40 hover:bg-[#00d4ff]/10 hover:text-[#00d4ff] transition-all duration-300 border-l-2 border-transparent group-hover:px-4 cursor-pointer">
+<span class="material-symbols-outlined min-w-[56px] text-center">psychology</span>
+<span class="font-label text-[10px] uppercase tracking-wider whitespace-nowrap opacity-0 group-hover:opacity-100">Deep Study</span>
+</div>
+<div class="flex items-center h-12 w-full text-[#c8d6e5]/40 hover:bg-[#00d4ff]/10 hover:text-[#00d4ff] transition-all duration-300 border-l-2 border-transparent group-hover:px-4 cursor-pointer">
+<span class="material-symbols-outlined min-w-[56px] text-center">ecg_heart</span>
+<span class="font-label text-[10px] uppercase tracking-wider whitespace-nowrap opacity-0 group-hover:opacity-100">Bio Metrics</span>
+</div>
+</nav>
+</div>
+<div class="px-4">
+<div class="hidden group-hover:block mb-4">
+<button class="w-full py-2 bg-primary-container text-on-primary font-label text-[9px] tracking-widest rounded-sm hover:brightness-110 transition-all">SWITCH_TO_GAME_MODE</button>
+</div>
+<div class="flex items-center text-[#c8d6e5]/40 group-hover:gap-2">
+<span class="material-symbols-outlined min-w-[32px] text-center text-xs">verified_user</span>
+<span class="font-label text-[8px] uppercase tracking-widest whitespace-nowrap opacity-0 group-hover:opacity-100">v1.0 // Niharu Shin</span>
+</div>
+</div>
+</aside>
+<main class="ml-14 mt-16 p-8 min-h-screen">
+<!-- Hero Section: Neural_Strata -->
+<section class="relative h-[716px] w-full rounded-xl overflow-hidden mb-12 border border-accent-gold/10 group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-105" data-alt="futuristic cyberpunk cityscape at night with neon lights reflecting on wet streets and massive holographic advertisements in the sky" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA5Ut9bz_OQeIajO9kYJARSRbnrmAkLMtyzQ1oGh0dBCX4mZiZEa6OWuOFVA7uvlpzyl5C0qZap-nIC1VBa90SqvO9SwWpxWwvgqgYMbWLOZRRUbxSpIuyMgDjKlf7bUaw82LZlu1otJ1bCV60sm98eMoem2w7HROpru7OvFvwtub7pj-sf2hXoQppWdEu-vRF8C_dAfb8pPJyMvM-SoZ-AOX7t4zRWSRtXPmwiv6vSY4wixslH0eKxvf8XQ-UjlrLUZ5dWqvFJbPXC')">
+</div>
+<div class="absolute inset-0 bg-gradient-to-r from-background via-background/40 to-transparent"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+<div class="absolute inset-y-0 left-0 w-1/2 flex flex-col justify-center px-16 space-y-6">
+<div class="flex items-center gap-3">
+<span class="bg-accent-gold/20 text-accent-gold px-3 py-1 font-label text-[10px] border border-accent-gold/30 tracking-widest rounded-sm">ORIGINAL SERIES</span>
+<span class="text-tertiary font-label text-[10px] flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" style="font-variation-settings: 'FILL' 1;">bolt</span>
+                        NEURAL_SYNC_READY
+                    </span>
+</div>
+<h1 class="text-7xl font-bold font-headline tracking-tighter text-on-surface leading-none uppercase">Neural<br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-accent-gold to-accent-gold-shimmer">Strata</span></h1>
+<p class="text-on-surface-variant max-w-md text-lg leading-relaxed font-light">In a world where memories can be uploaded, one architect discovers a hidden layer of the human consciousness that wasn't meant to be seen.</p>
+<div class="flex items-center gap-6 pt-4">
+<button class="bg-accent-gold text-background px-8 py-3 font-headline font-bold uppercase tracking-widest flex items-center gap-2 hover:scale-105 transition-transform gold-shimmer">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                        Initialize
+                    </button>
+<button class="border border-white/20 px-8 py-3 font-headline font-bold uppercase tracking-widest text-on-surface backdrop-blur-md hover:bg-white/10 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined">add</span>
+                        Watchlist
+                    </button>
+</div>
+<!-- Stream Metrics Overlay -->
+<div class="pt-12 grid grid-cols-3 gap-8">
+<div>
+<span class="block font-label text-[8px] text-outline uppercase tracking-tighter mb-1">Stream Integrity</span>
+<div class="flex items-end gap-2">
+<span class="text-2xl font-headline font-bold text-primary">8.4<span class="text-xs font-normal">Gbps</span></span>
+<div class="h-4 w-12 bg-surface-container flex items-end gap-0.5 p-0.5 rounded-sm overflow-hidden">
+<div class="w-1 bg-tertiary h-1/2"></div>
+<div class="w-1 bg-tertiary h-2/3"></div>
+<div class="w-1 bg-tertiary h-4/5"></div>
+<div class="w-1 bg-tertiary h-full"></div>
+</div>
+</div>
+</div>
+<div>
+<span class="block font-label text-[8px] text-outline uppercase tracking-tighter mb-1">Luminance</span>
+<span class="text-2xl font-headline font-bold text-accent-gold">HDR+</span>
+</div>
+<div>
+<span class="block font-label text-[8px] text-outline uppercase tracking-tighter mb-1">Audio_Fidelity</span>
+<span class="text-2xl font-headline font-bold text-[#d1bcff]">ATMOS</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Grid Section -->
+<section class="space-y-8 mb-16">
+<div class="flex justify-between items-end">
+<div>
+<span class="font-label text-[10px] text-primary uppercase tracking-[0.3em]">Sector_02</span>
+<h2 class="text-3xl font-headline font-bold tracking-tight uppercase">Priority Watchlist</h2>
+</div>
+<a class="text-outline hover:text-accent-gold font-label text-xs uppercase tracking-widest transition-colors" href="#">Expand Archive //</a>
+</div>
+<div class="grid grid-cols-5 gap-6">
+<!-- Movie Card 1 -->
+<div class="group relative aspect-[2/3] rounded-lg overflow-hidden border border-outline-variant/20 gold-shimmer cursor-pointer">
+<img class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110" data-alt="dramatic wide shot of a lone astronaut standing on a bioluminescent purple alien planet surface under multiple moons" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBidVdYJkkpuIDTtuFFMHed3Bml23JJoWgkBcJyxbosl9uPvQ057m2NZuevhnH7CHZcSPh6tb_8TcDhIkJNdkin6QuD-jp1ZClc0YNx_fg5LbVj-IXH8buXGMuKVnG3gMVO3Q6JmH-75bDiQBeJMZL14IJLgELUiDE4ud53XTXJFaubtDbJqNxcnPPosdpMI5F_8WVlRJCYwH0Mr9kQ_t05oJVBJwIRZXAYY0MEvGnPmZH78K4TeVSdJjIhOu3EmRz7Ny90-ExCtV8L"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
+<div class="absolute bottom-0 p-4 w-full">
+<span class="font-label text-[8px] text-accent-gold uppercase mb-1 block">Sci-Fi // Thriller</span>
+<h3 class="font-headline font-bold text-lg leading-tight uppercase group-hover:text-accent-gold transition-colors">Void Runner</h3>
+<div class="mt-2 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
+<span class="text-[10px] font-label text-on-surface-variant">IMDB 8.9</span>
+<span class="material-symbols-outlined text-accent-gold text-lg">play_circle</span>
+</div>
+</div>
+</div>
+<!-- Movie Card 2 -->
+<div class="group relative aspect-[2/3] rounded-lg overflow-hidden border border-outline-variant/20 gold-shimmer cursor-pointer">
+<img class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110" data-alt="cinematic close up of a retro futuristic camera lens with complex glass reflections and technical markings" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtMfONZzK_KGfF-Wd9FMuvoM-SCKeEyMf84CDaxZ_Yiniga-HQuGxPKghDAXRykeZgDQfN7lq1Bk2hgmc4nTjDgyXkl4yrfdMSliirt9HGkW50-i190xQEYDqHS5sVtG8KSHgOKzZZLbOl3fTzgFpECiG_y71Pr___XiAefqytIPbe_1PR28mZiMSLA9Z8pTWRWOHo5r8EXcs6tTGq_f6HBton9YWBOrq_OVYKbzneqRW5E6KAsLdcE1m_73Dh7J_L9vdpHkh2jv9t"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
+<div class="absolute bottom-0 p-4 w-full">
+<span class="font-label text-[8px] text-accent-gold uppercase mb-1 block">Documentary</span>
+<h3 class="font-headline font-bold text-lg leading-tight uppercase group-hover:text-accent-gold transition-colors">Silicon Soul</h3>
+<div class="mt-2 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
+<span class="text-[10px] font-label text-on-surface-variant">4K HDR</span>
+<span class="material-symbols-outlined text-accent-gold text-lg">play_circle</span>
+</div>
+</div>
+</div>
+<!-- Movie Card 3 -->
+<div class="group relative aspect-[2/3] rounded-lg overflow-hidden border border-outline-variant/20 gold-shimmer cursor-pointer">
+<img class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110" data-alt="silhouette of a person walking through a foggy neon lit alleyway with steam rising from vents cinematic noir style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2_SqGPUY6qBjOdxQLWV0Ia4wHA31qePqgo27NJTNuW2FwOpApa5g2z8X0jqBUSivWkjxER2yK6wnwLcoOtPM14_3GP8tTHVmpmlI5RrvMEVKCdfhVD9YlWEXUPldG7xaXmjGW4UCNA-kdkUcMwMWlKMIrWMgmwqe870PLbAKqMBibxxpyZ4bqinqN8XW1J4rEjxchaZSP4VSUgKpgQqprIFg68rPbN8cNt09hUBDGjkrT8HSt31kiqb58Z1MyrpEQ1uaXXpezcmM5"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
+<div class="absolute bottom-0 p-4 w-full">
+<span class="font-label text-[8px] text-accent-gold uppercase mb-1 block">Neo Noir</span>
+<h3 class="font-headline font-bold text-lg leading-tight uppercase group-hover:text-accent-gold transition-colors">Echo Protocol</h3>
+<div class="mt-2 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
+<span class="text-[10px] font-label text-on-surface-variant">IMDB 9.2</span>
+<span class="material-symbols-outlined text-accent-gold text-lg">play_circle</span>
+</div>
+</div>
+</div>
+<!-- Movie Card 4 -->
+<div class="group relative aspect-[2/3] rounded-lg overflow-hidden border border-outline-variant/20 gold-shimmer cursor-pointer">
+<img class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110" data-alt="wide shot of the earth from orbit at night with city lights glowing and a bright sun rising over the horizon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCemYcT8kz36riAbNzZKRVQE6GPp1jz7fHouNoMktEcIqgHaU_A2nIPjhtXyYeDhp3lznjzWfgPKq-8Vy_L7VK7T-zDReOyrIsPBx7DPXJ1JdvC1QJUIp69PVfUFCP9I4Dov6GVVw9IgQJzajPWgCFdkPNZM0ABvUb286u2yCpcUR1jl7SKy7nNKOaK1V6fBgFr_SW1U6InagqlatRes2674DUIy7bI7KgevPVeIVyG_6G4uVfyK8R0SVacy5XSS8QTqBfiwLivD_55"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
+<div class="absolute bottom-0 p-4 w-full">
+<span class="font-label text-[8px] text-accent-gold uppercase mb-1 block">Odyssey</span>
+<h3 class="font-headline font-bold text-lg leading-tight uppercase group-hover:text-accent-gold transition-colors">Last Dawn</h3>
+<div class="mt-2 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
+<span class="text-[10px] font-label text-on-surface-variant">8K MASTER</span>
+<span class="material-symbols-outlined text-accent-gold text-lg">play_circle</span>
+</div>
+</div>
+</div>
+<!-- Movie Card 5 -->
+<div class="group relative aspect-[2/3] rounded-lg overflow-hidden border border-outline-variant/20 gold-shimmer cursor-pointer">
+<img class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110" data-alt="top down view of organized retro technology including circuit boards and old compute chips on a dark reflective surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD137Ev1LjexDniLnN_cFhrYu-7gzjbKMqOqwu6EnZn9LM5di5ZlxtoFiNcPJ-VCcixlQ8A_YgCOgUNgwYlEz69ScgeWW9AytFA9sUmfcThXbMETuub6L2PdQrj7m_nIWwvRl22rC0gvHvfOqXF2pYuqC6jShqZ_OvUbgit3dkKfWzVYiqjHnOlCHId0J93VzzU27WS-8zRo54Lz5nF3Cc8UGix0Mrsq6w6O3pjtHNbELG66f5xaBtkjPWy59bDYhQ4wpb4ZHyxNUs6"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
+<div class="absolute bottom-0 p-4 w-full">
+<span class="font-label text-[8px] text-accent-gold uppercase mb-1 block">Bio Tech</span>
+<h3 class="font-headline font-bold text-lg leading-tight uppercase group-hover:text-accent-gold transition-colors">Genesis.exe</h3>
+<div class="mt-2 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
+<span class="text-[10px] font-label text-on-surface-variant">DOLBY VISION</span>
+<span class="material-symbols-outlined text-accent-gold text-lg">play_circle</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Metadata Bento -->
+<section class="grid grid-cols-12 gap-6 mb-16">
+<!-- Quality Monitor -->
+<div class="col-span-8 glass-panel p-8 rounded-xl flex items-center justify-between overflow-hidden relative">
+<div class="relative z-10 space-y-6">
+<div>
+<span class="font-label text-[10px] text-primary uppercase tracking-widest block mb-2">Network Topology // Optimization</span>
+<h2 class="text-4xl font-headline font-bold text-on-surface">Neural Stream <span class="text-glow-gold text-accent-gold">Optimized</span></h2>
+</div>
+<div class="flex gap-12">
+<div>
+<span class="text-outline font-label text-[9px] uppercase block">Signal Loss</span>
+<span class="text-2xl font-headline font-bold text-tertiary">0.002%</span>
+</div>
+<div>
+<span class="text-outline font-label text-[9px] uppercase block">Cache Status</span>
+<span class="text-2xl font-headline font-bold text-primary">SYNCED</span>
+</div>
+<div>
+<span class="text-outline font-label text-[9px] uppercase block">Server Node</span>
+<span class="text-2xl font-headline font-bold text-on-surface">TOKYO_04</span>
+</div>
+</div>
+</div>
+<div class="w-1/3 h-full flex items-center justify-center opacity-20">
+<span class="material-symbols-outlined text-9xl text-primary animate-pulse">hub</span>
+</div>
+</div>
+<!-- Profile Overview -->
+<div class="col-span-4 bg-surface-container-high/40 p-8 rounded-xl border border-outline-variant/10 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4">
+<span class="material-symbols-outlined text-accent-gold/40 group-hover:text-accent-gold transition-colors">stars</span>
+</div>
+<span class="font-label text-[10px] text-accent-gold uppercase tracking-widest block mb-6">User Stats // Alpha</span>
+<div class="space-y-4">
+<div class="flex justify-between items-center border-b border-outline-variant/10 pb-2">
+<span class="text-xs font-label text-outline uppercase">Viewing Hours</span>
+<span class="text-lg font-headline font-bold">1,248</span>
+</div>
+<div class="flex justify-between items-center border-b border-outline-variant/10 pb-2">
+<span class="text-xs font-label text-outline uppercase">Library Size</span>
+<span class="text-lg font-headline font-bold">452</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-xs font-label text-outline uppercase">Neural Sync</span>
+<span class="text-lg font-headline font-bold text-tertiary">98.4%</span>
+</div>
+</div>
+<button class="w-full mt-8 py-3 border border-primary/20 text-primary font-headline font-bold text-xs uppercase tracking-[0.2em] hover:bg-primary/5 transition-all">
+                    System Preferences
+                </button>
+</div>
+</section>
+<!-- System Ticker Footer -->
+<footer class="mt-auto pt-12 pb-8 border-t border-outline-variant/10">
+<div class="overflow-hidden whitespace-nowrap mb-8">
+<div class="system-ticker inline-block text-[10px] font-label text-outline uppercase tracking-[0.4em] space-x-12">
+<span>SYSTEM_STATUS: NOMINAL</span>
+<span>ENCRYPTION: AES-256-GCM</span>
+<span>AI_CO_PROCESSOR: ACTIVE</span>
+<span>BUFFER_STREAM: 100% READY</span>
+<span>SESSION_TOKEN: 0x8F92...E4A1</span>
+<span>BUILT_BY_NIHARU_SHIN</span>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex gap-8">
+<a class="text-[10px] font-label text-outline hover:text-primary transition-colors uppercase" href="#">Security_Protocol</a>
+<a class="text-[10px] font-label text-outline hover:text-primary transition-colors uppercase" href="#">Data_Sovereignty</a>
+<a class="text-[10px] font-label text-outline hover:text-primary transition-colors uppercase" href="#">System_API</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-[10px] font-label text-outline/50 uppercase">Managed by</span>
+<span class="text-[11px] font-label text-accent-gold tracking-widest font-bold">J.A.R.V.I.S._OS // EDGE_AI_UNIT</span>
+</div>
+</div>
+</footer>
+</main>
+<!-- FAB Suppression: No FAB on movie discovery per instructions -->
+</body></html>
